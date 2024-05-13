@@ -1,0 +1,77 @@
+<%- include('partials/header') -%>
+
+<main class="container-fluid p-4 min-400 d-flex flex-column row-gap-3">
+  <h1>Book Your Next Appointment</h1>
+ <form action="/book/createAppointment" method="POST" class="d-flex flex-column row-gap-4">
+    <div class="row g-3">
+        <div class="col">
+          <input type="text" name="fName" class="form-control" placeholder="First name" aria-label="First name" required>
+        </div>
+        <div class="col">
+          <input type="text" name="lName" class="form-control" placeholder="Last name" aria-label="Last name" required>
+        </div>
+    </div>
+      <div class="row">
+        <div class="col">
+          <input type="email" name="email" class="form-control" placeholder="divine@example.com" aria-label="Email" autocomplete="on" required>
+        </div>
+        <div class="col">
+          <input type="tel" name="number" class="form-control" placeholder="123-4567-8901" aria-label="Phone Number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required  minlength="9"
+          maxlength="14" >
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <label class="visually-hidden" for="specificSizeSelect">Preference</label>
+        <select name="time" class="form-select" id="specificSizeSelect" required>
+          <option selected disabled value="">Appointment Time</option>
+          <option value="5/13 3:00PM">5/13 3:00PM</option>
+          <option value="5/14 3:00PM">5/14 3:00PM</option>
+          <option value="5/15 3:00PM">5/15 3:00PM</option>
+
+        </select>
+      </div>
+
+      <div class="d-flex flex-column row-gap-3">
+        <div>
+          <h4>Please include all services you would like on your appointment</h4>
+          <span>You will receive a call to confirm what exact services and add-ons you anticipate for your appointment</span>
+        </div>
+        <fieldset name="checkbox" id="sectionForm">
+          <%   if(err){ %>
+            <span class="fs-6 text-danger"><%= err %></span>
+       <% } %>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="Manicure" id="manicureCheck" name="choices">
+            <label class="form-check-label" for="manicureCheck">
+              Manicure
+            </label>
+          </div>
+          <div class="form-check">
+            <input name="choices" class="form-check-input" type="checkbox" value="Pedicure" id="pedicureCheck">
+            <label class="form-check-label" for="pedicureCheck">
+              Pedicure
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" name="choices" type="checkbox" value="Wax" id="waxCheck" >
+            <label class="form-check-label" for="waxCheck">
+              Wax
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" name="choices" type="checkbox" value="Fill" id="fillCheck" >
+            <label class="form-check-label" name="choices" for="fillCheck">
+              Fill
+            </label>
+          </div>
+        </fieldset>
+
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Additional Comments</label>
+        <textarea class="form-control" name="comments" id="exampleFormControlTextarea1" rows="3" placeholder="Add Text Here..."></textarea>
+      </div>
+        <input class="btn btn-outline-secondary mx-auto" id="bookingForm" type="submit">
+    </form>
+</main>
+<%- include('partials/footer') -%>

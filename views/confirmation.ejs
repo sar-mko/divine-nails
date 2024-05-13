@@ -1,0 +1,40 @@
+<%- include('partials/header') -%>
+
+<div class="container d-flex flex-column justify-content-center align-items-center column-gap-5 p-4">
+  <h1 class="hedvig-letters-serif-header">You're booked!</h1>
+  <div class="card border-success" style="width: 18rem;">
+    <div class="card-body ">
+      <h5 class="card-title">Your Appointment:</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">For: <%= fName %> </h6>
+      <div>
+        <h6 class="card-text"> Date & Time:  </h6>
+        <p><%= date %></p>
+      </div>
+      <div>
+        <h6 class="card-text"> Email:</h6>
+        <p><%= email %> </p>
+      </div>
+      <div>
+        <h6 class="card-text"> Services: </h6>
+        <ul class="list-group">
+          <%   if(Array.isArray(services)){ %>
+            <% services.forEach(x => { %>
+              <li class="list-group-item fw-normal"><%= x %></li>
+             <% }) %>
+             <%}else{%>
+              <li class="list-group-item fw-normal"><%= services %></li>
+              <% } %>
+          
+        </ul>
+      </div>
+ 
+     <div class="py-2">
+      <h6>Want to see add-ons for your appointment?</h6>
+      <a href="/services" class="card-link">Check out our services page</a>
+     </div>
+      
+    </div>
+  </div>
+  <div>
+</div>
+<%- include('partials/footer') -%>
